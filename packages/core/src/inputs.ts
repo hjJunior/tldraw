@@ -386,7 +386,7 @@ export class Inputs {
     e: PointerEvent | React.PointerEvent | Touch | React.Touch | WheelEvent,
     bounds: TLBounds
   ): number[] {
-    return [+e.clientX.toFixed(2) - bounds.minX, +e.clientY.toFixed(2) - bounds.minY]
+    return [+e.clientX.toFixed(2) + window.scrollX, +e.clientY.toFixed(2) + window.scrollY]
   }
 
   static getPressure(e: PointerEvent | React.PointerEvent | Touch | React.Touch | WheelEvent) {

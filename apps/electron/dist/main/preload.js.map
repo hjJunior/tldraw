@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/main/preload.ts"],
+  "sourcesContent": ["import { contextBridge, ipcRenderer } from 'electron'\nimport type { Message, TldrawBridgeApi } from 'src/types'\n\nconst api: TldrawBridgeApi = {\n  send: (channel: string, data: Message) => {\n    ipcRenderer.send(channel, data)\n  },\n  on: (channel, cb) => {\n    ipcRenderer.on(channel, (event, message) => cb(message as Message))\n  },\n}\n\ncontextBridge?.exposeInMainWorld('TldrawBridgeApi', api)\n\nexport {}\n"],
+  "mappings": "ohBAAA,iBAA2C,uBAGrC,EAAuB,CAC3B,KAAM,CAAC,EAAiB,IAAkB,CACxC,cAAY,KAAK,EAAS,IAE5B,GAAI,CAAC,EAAS,IAAO,CACnB,cAAY,GAAG,EAAS,CAAC,EAAO,IAAY,EAAG,MARnD,EAYA,6BAAe,kBAAkB,kBAAmB",
+  "names": []
+}

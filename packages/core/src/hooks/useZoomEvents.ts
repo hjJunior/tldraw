@@ -34,7 +34,7 @@ export function useZoomEvents<T extends HTMLElement>(zoom: number, ref: React.Re
   useGesture(
     {
       onWheel: ({ delta, event: e }) => {
-        e.preventDefault()
+        return;
 
         if (e.altKey && e.buttons === 0) {
           const point = inputs.pointer?.point ?? [bounds.width / 2, bounds.height / 2]
